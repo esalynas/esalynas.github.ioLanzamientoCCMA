@@ -321,14 +321,19 @@ box-shadow: 0 0 10px rgba(0,229,255,0.1);
 
 <script>
 function accesoProtegido(event){
-event.preventDefault();
-const claveCorrecta="00";
-const ingreso= prompt("Ingrese la clave de acceso:");
-if(ingreso===claveCorrecta){
-window.open("https://office.compages","_blank");
-}else{
-alert("No permitido");
-}
+    event.preventDefault(); // Detiene la apertura automática
+    
+    // Captura el enlace real escrito en el atributo href del elemento clickeado
+    const urlDestino = event.currentTarget.getAttribute("href"); 
+    const claveCorrecta = "00";
+    const ingreso = prompt("Ingrese la clave de acceso:");
+    
+    if(ingreso === claveCorrecta){
+        // Abre el enlace real del formulario en una nueva pestaña
+        window.open(urlDestino, "_blank"); 
+    } else {
+        alert("No permitido");
+    }
 }
 </script>
 
